@@ -1,0 +1,260 @@
+package com.example.recep.kpss2;
+
+import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.PorterDuff;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+public class Tarihekrani extends Activity {
+
+    //Textview ve button IDleri
+    TextView tv1;
+    Button btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10;
+
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.tarih_ekrani);
+
+        tv1 = (TextView) findViewById(R.id.textView);
+        btn3 = (Button) findViewById(R.id.button3);
+        btn4 = (Button) findViewById(R.id.button4);
+        btn5 = (Button) findViewById(R.id.button5);
+        btn6 = (Button) findViewById(R.id.button6);
+        btn7 = (Button) findViewById(R.id.button7);
+        btn8 = (Button) findViewById(R.id.button8);
+        btn9 = (Button) findViewById(R.id.button9);
+        btn10 = (Button) findViewById(R.id.button10);
+
+        // btn3 e basınca bütün renkleri sıfırla, btn3 kırmızıya boya, mesajı görüntüle
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn4.getBackground().clearColorFilter();
+                btn5.getBackground().clearColorFilter();
+                btn6.getBackground().clearColorFilter();
+                btn7.getBackground().clearColorFilter();
+                btn3.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                Toast.makeText(Tarihekrani.this, "A Şıkkını İşaretlediniz!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // btn4 e basınca bütün renkleri sıfırla, btn4 kırmızıya boya, mesajı görüntüle
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn3.getBackground().clearColorFilter();
+                btn5.getBackground().clearColorFilter();
+                btn6.getBackground().clearColorFilter();
+                btn7.getBackground().clearColorFilter();
+                btn4.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                Toast.makeText(Tarihekrani.this, "B Şıkkını İşaretlediniz!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // btn5 e basınca bütün renkleri sıfırla, btn5 kırmızıya boya, mesajı görüntüle
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn3.getBackground().clearColorFilter();
+                btn4.getBackground().clearColorFilter();
+                btn6.getBackground().clearColorFilter();
+                btn7.getBackground().clearColorFilter();
+                btn5.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                Toast.makeText(Tarihekrani.this, "C Şıkkını İşaretlediniz!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // btn6 e basınca bütün renkleri sıfırla, btn6 kırmızıya boya, mesajı görüntüle
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn3.getBackground().clearColorFilter();
+                btn4.getBackground().clearColorFilter();
+                btn5.getBackground().clearColorFilter();
+                btn7.getBackground().clearColorFilter();
+                btn6.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                Toast.makeText(Tarihekrani.this, "D Şıkkını İşaretlediniz!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // btn7 e basınca bütün renkleri sıfırla, btn7 kırmızıya boya, mesajı görüntüle
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn3.getBackground().clearColorFilter();
+                btn4.getBackground().clearColorFilter();
+                btn5.getBackground().clearColorFilter();
+                btn6.getBackground().clearColorFilter();
+                btn7.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+                Toast.makeText(Tarihekrani.this, "E Şıkkını İşaretlediniz!", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
+//diğer classtan çekmeye çalışacam
+        //btn9.setOnClickListener(new View.OnClickListener() {
+        // @Override
+        // public void onClick(View v) {
+        // btn3.getBackground().clearColorFilter();
+        // btn4.getBackground().clearColorFilter();
+        //btn5.getBackground().clearColorFilter();
+        //btn6.getBackground().clearColorFilter();
+        //btn7.getBackground().clearColorFilter();
+        //btn3.setText("bilmiyom ki");
+        //////btn4.setText("Bende bilmiyom");
+        //btn5.setText("Ben hiç bilmiyom:)");
+        //btn6.setText("Bi yerden bulacaz artık :)");
+        //btn7.setText("SQlite databasesten çekmeliyiz ama nasıl?:)");
+        //btn10.setText("SQlite databasesten çekmeliyiz ama nasıl?:)");
+        //}
+
+        //});
+        //diğer clastan çekmeye çalışılıyor
+
+
+        // btn8 e basınca btn10 ile hangisi eşşit ise yeşile boya
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (btn10.getText() == btn3.getText()) {
+                    btn3.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                } else if (btn10.getText() == btn4.getText()) {
+                    btn4.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                } else if (btn10.getText() == btn5.getText()) {
+                    btn5.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                } else if (btn10.getText() == btn6.getText()) {
+                    btn6.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                } else if (btn10.getText() == btn7.getText()) {
+                    btn7.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+                }
+            }
+        });
+
+    }
+
+
+    //burdan sonrası tufan
+    //database ismi ve tablo ismi
+    private static final String DB_NAME = "kpsssorular";
+    private static final String TABLE = "kpsssorularr";
+
+    // Tablo sütun isimleri
+    private static final String ID = "numara";
+    private static final String SORU = "soru";
+    private static final String ASIKKI = "acevap";
+    private static final String BSIKKI = "bcevap";
+    private static final String CSIKKI = "ccevap";
+    private static final String DSIKKI = "dcevap";
+    private static final String ESIKKI = "ecevap";
+    private static final String FSIKKI = "fcevap";
+
+    // Activity ekranındaki buton ve Textview IDleri
+    TextView tv1;
+    Button btn3, btn4, btn5, btn6, btn7, btn9, btn10;
+
+
+    public class Contact {
+
+        //private variables
+        int numara;
+        String soru;
+        String acevap, bcevap, ccevap, dcevap, ecevap, fcevap;
+
+        // Empty constructor
+        public Contact() {
+
+        }
+
+        // constructor
+        public Contact(int numara, String soru, String acevap, String bcevap, String ccevap, String dcevap, String ecevap, String fcevap,) {
+            this.numara = numara;
+            this.soru = soru;
+            this.acevap = acevap;
+            this.bcevap = bcevap;
+            this.ccevap = ccevap;
+            this.dcevap = dcevap;
+            this.ecevap = ecevap;
+            this.fcevap = fcevap;
+        }
+
+
+        // getting ID
+        public int getID() {
+            return this.numara;
+        }
+
+        // setting id
+        public void setID(int numara) {
+            this.numara = numara;
+        }
+
+        // getting name
+        public String getName() {
+            return this.soru,acevap, bcevap, ccevap, dcevap, ecevap, fcevap,;
+        }
+
+    }
+
+    public class DatabaseHandler extends SQLiteOpenHelper {
+
+        // Database Version
+        private static final int DATABASE_VERSION = 1;
+
+        // Database Name
+        private static final String DATABASE_NAME = "kpsssorular";
+
+        // Contacts table name
+        private static final String TABLE_CONTACTS = "kpsssorularr";
+
+        // Contacts Table Columns names
+        private static final String NUMARA = "numara";
+        private static final String SORU = "soru";
+        private static final String ASIKKI = "acevap";
+        private static final String BSIKKI = "bcevap";
+        private static final String CSIKKI = "ccevap";
+        private static final String DSIKKI = "dcevap";
+        private static final String ESIKKI = "ecevap";
+        private static final String FSIKKI = "fcevap";
+
+        public DatabaseHandler(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
+        public Contact getContact(String String) {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            Cursor cursor = db.query(TABLE_CONTACTS, new String[] { NUMARA,
+                            SORU, ASIKKI, BSIKKI, CSIKKI, DSIKKI, ESIKKI, FSIKKI }, null,
+                    new String[] { String.valueOf(NUMARA) }, null, null, null, null);
+            if (cursor != null)
+                cursor.moveToFirst();
+
+            Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8));
+            // return contact
+            return contact;
+        }
+
+
+
+
+
+
+
+
+    }
+
+        //tufan buraya kadar
+
+
+
+}
